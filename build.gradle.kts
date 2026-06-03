@@ -17,6 +17,13 @@ java {
     withJavadocJar()
 }
 
+tasks.javadoc {
+    (options as StandardJavadocDocletOptions).tags = listOf(
+        "apiNote:a:API Note:",
+        "implSpec:a:Implementation Requirements:",
+        "implNote:a:Implementation Note:")
+}
+
 signing {
     useGpgCmd()
 }
