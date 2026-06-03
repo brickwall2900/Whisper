@@ -2,7 +2,7 @@ plugins {
     id("java")
 }
 
-group = "io.github.brickwall2900.processing"
+group = "io.github.brickwall2900"
 version = "1.0.0"
 
 repositories {

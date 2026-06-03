@@ -1,2 +1,2 @@
-rootProject.name = "ProcessManager"
+rootProject.name = "whisper"
 include("demo")
