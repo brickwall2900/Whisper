@@ -17,6 +17,40 @@ java {
     withJavadocJar()
 }
 
+signing {
+    useGpgCmd()
+}
+
+centralPortal {
+    pom {
+        name = project.group.toString()
+        description = project.description
+        inceptionYear = "2026"
+        url = "https://github.com/brickwall2900/Whisper"
+
+        licenses {
+            license {
+                name = "MIT License"
+                url = "https://mit-license.org/"
+            }
+        }
+
+        developers {
+            developer {
+                id = "brickwall2900"
+                name = "Marsh"
+                email = "brickwall2900@gmail.com"
+            }
+        }
+
+        scm {
+            connection = "scm:https://github.com/brickwall2900/Whisper.git"
+            developerConnection = "scm:git:ssh://git@github.com:brickwall2900/Whisper.git"
+            url = "https://github.com/brickwall2900/Whisper"
+        }
+    }
+}
+
 repositories {
     mavenCentral()
 }
