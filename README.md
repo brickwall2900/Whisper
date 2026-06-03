@@ -3,6 +3,8 @@
 ... a local TCP + TLS connection that makes
 intercommunicating processes go broom broomm
 
+[![whisper](https://maven-badges.sml.io/sonatype-central/io.github.brickwall2900/whisper/badge.svg?subject=whisper)](https://maven-badges.sml.io/sonatype-central/io.github.brickwall2900/whisper/)
+
 Java 9 module system compatible as well hell yeahhhh
 (`io.github.brickwall2900.whisper`)
 
