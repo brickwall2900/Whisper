@@ -1,9 +1,21 @@
 plugins {
     id("java")
+    id("java-library")
+    id("maven-publish")
+    id("net.thebugmc.gradle.sonatype-central-portal-publisher").version("1.2.4")
 }
 
 group = "io.github.brickwall2900"
 version = "1.0.0"
+description = "yet another interprocess communication library in Java using TCP + TLS"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+
+    withSourcesJar()
+    withJavadocJar()
+}
 
 repositories {
     mavenCentral()

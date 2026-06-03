@@ -85,7 +85,7 @@ final class TLSCertificateFactory {
             if (caKeyPair != null) {
                 try {
                     caKeyPair.getPrivate().destroy();
-                } catch (DestroyFailedException _) {
+                } catch (DestroyFailedException ignored) {
                 }
             }
         }
@@ -149,7 +149,7 @@ final class TLSCertificateFactory {
             if (caPrivateKey != null) {
                 try {
                     caPrivateKey.destroy();
-                } catch (DestroyFailedException _) {
+                } catch (DestroyFailedException ignored) {
                 }
             }
         }

@@ -193,20 +193,20 @@ public final class ProcessManagerChild extends ProcessManager {
                         f.sync();
                     }
                     LOGGER.debug("Shutdown request sent!");
-                } catch (InterruptedException _) {
+                } catch (InterruptedException ignored) {
                 }
             }
 
             try {
                 LOGGER.debug("Now shutting down IPC connection");
                 clientService.destroy();
-            } catch (Exception _) {
+            } catch (Exception ignored) {
             }
 
             try {
                 LOGGER.debug("Deleting certificate file {}", tlsCertificateFactory.getKeystorePath());
                 Files.deleteIfExists(tlsCertificateFactory.getKeystorePath());
-            } catch (IOException _) {
+            } catch (IOException ignored) {
             }
             LOGGER.debug("Bye!");
 
@@ -290,7 +290,7 @@ public final class ProcessManagerChild extends ProcessManager {
             connection.sendPacket(new ShutdownAckPacket());
             try {
                 Thread.sleep(1000);
-            } catch (InterruptedException _) {
+            } catch (InterruptedException ignored) {
             }
 
             Thread.ofPlatform().start(() -> processor.exit("Shutdown by master request", packet.exitCode()));

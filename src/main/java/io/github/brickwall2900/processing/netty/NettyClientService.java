@@ -81,7 +81,7 @@ public class NettyClientService implements Service {
         try {
             channelFuture = bootstrap.connect(new InetSocketAddress(hostname, port)).sync();
             channel = channelFuture.channel();
-        } catch (InterruptedException _) {
+        } catch (InterruptedException ignored) {
         }
     }
 
@@ -110,9 +110,9 @@ public class NettyClientService implements Service {
                 channelFuture.sync()
                         .channel()
                         .closeFuture()
-                        .addListener(_ -> channel = null);
+                        .addListener(ignored -> channel = null);
             }
-        } catch (InterruptedException _) {
+        } catch (InterruptedException ignored) {
         }
 
         if (eventLoopGroup != null) {

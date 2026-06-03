@@ -96,7 +96,7 @@ public final class ProcessBootstrap {
 
             processManager.asChild().sendPacket(new ExceptionPacket(
                     ProcessManager.throwableToExceptionInfo(processManager.myId, e)));
-        } catch (Exception _) {
+        } catch (Exception ignored) {
         }
     }
 
@@ -247,7 +247,7 @@ public final class ProcessBootstrap {
                     }
 
                     Thread.sleep(Duration.ofSeconds(1));
-                } catch (Exception _) {
+                } catch (Exception ignored) {
                 }
             }
         }

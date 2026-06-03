@@ -108,7 +108,7 @@ public class NettyServerService implements Service {
                         .closeFuture()
                         .sync();
             }
-        } catch (InterruptedException _) {
+        } catch (InterruptedException ignored) {
         }
 
         if (eventLoopGroup != null) {

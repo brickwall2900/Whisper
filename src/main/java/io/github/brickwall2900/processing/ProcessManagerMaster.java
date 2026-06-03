@@ -31,6 +31,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.TimeUnit;
 
 public final class ProcessManagerMaster extends ProcessManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProcessManagerMaster.class);
@@ -344,7 +345,7 @@ public final class ProcessManagerMaster extends ProcessManager {
         synchronized (connection) {
             try {
                 connection.wait(shutdownTime.toMillis());
-            } catch (InterruptedException _) {
+            } catch (InterruptedException ignored) {
                 LOGGER.debug("interrupted during shutdown wait time");
             }
         }
@@ -371,7 +372,7 @@ public final class ProcessManagerMaster extends ProcessManager {
 
         Process process = connection.getProcess();
         if (process != null) {
-            process.waitFor(initWaitTime);
+            process.waitFor(initWaitTime.toSeconds(), TimeUnit.SECONDS);
         }
     }
 
@@ -412,10 +413,10 @@ public final class ProcessManagerMaster extends ProcessManager {
             process.destroy();
 
             try {
-                if (!process.waitFor(waitDuration)) {
+                if (!process.waitFor(waitDuration.toSeconds(), TimeUnit.SECONDS)) {
                     process.destroyForcibly();
                 }
-            } catch (InterruptedException _) {
+            } catch (InterruptedException ignored) {
                 process.destroyForcibly();
             }
         }
@@ -478,7 +479,7 @@ public final class ProcessManagerMaster extends ProcessManager {
         synchronized (connection) {
             try {
                 connection.wait();
-            } catch (InterruptedException _) {
+            } catch (InterruptedException ignored) {
             }
         }
     }
@@ -501,7 +502,7 @@ public final class ProcessManagerMaster extends ProcessManager {
         synchronized (connection) {
             try {
                 connection.wait(duration.toMillis(), duration.toNanosPart());
-            } catch (InterruptedException _) {
+            } catch (InterruptedException ignored) {
             }
         }
     }

@@ -132,7 +132,7 @@ public final class MasterMessenger extends Messenger
     }
 
     private Set<UUID> getOrCreateChannel(String channel) {
-        return channelSubscriptions.computeIfAbsent(channel, _ -> ConcurrentHashMap.newKeySet());
+        return channelSubscriptions.computeIfAbsent(channel, c -> ConcurrentHashMap.newKeySet());
     }
 
     private Set<UUID> getChannel(String channel) {
