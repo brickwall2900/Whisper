@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.brickwall2900"
-version = "1.0.0"
+version = "1.0.1"
 description = "yet another interprocess communication library in Java using TCP + TLS"
 
 java {
@@ -67,15 +67,15 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    compileOnly(libs.slf4j.api)
+    implementation(libs.slf4j.api)
 
-    compileOnly(libs.bcprov.jdk18on)
-    compileOnly(libs.bcpkix.jdk18on)
+    implementation(libs.bcprov.jdk18on)
+    implementation(libs.bcpkix.jdk18on)
 
     // how many damn modules are there?
-    compileOnly(libs.bundles.netty)
+    implementation(libs.bundles.netty)
 
-    compileOnly(libs.annotations)
+    implementation(libs.annotations)
 }
 
 tasks.test {
